@@ -76,7 +76,7 @@ class AssetStatusController extends Controller
         /* JSON */
         // return response()->json($asset_status, 200);
         /* View Blade */
-        return view('pages.setting.asset-status.show')->with([
+        return view('pages.setting.asset-status.edit')->with([
             'asset_status' => $asset_status
         ], 200);
     }
