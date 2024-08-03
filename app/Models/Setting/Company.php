@@ -5,10 +5,15 @@ namespace App\Models\Setting;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssetStatus extends Model
+class Company extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name'
+        'name',
+        'status',
+        'address',
+        'country',
+        'regency',
+        'postal_code',
     ];
 }
