@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('setting')->group(function () {
-    Route::resource('assetstatus', AssetStatusController::class);
+    Route::resource('assetstatus', AssetStatusController::class)->middleware('role:admin');
 });
 
 require __DIR__.'/auth.php';
