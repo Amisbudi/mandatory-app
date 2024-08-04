@@ -23,6 +23,14 @@
                     ])">
                         {{ __('Asset Status') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs([
+                        'users.index',
+                        'users.create',
+                        'users.show',
+                        'users.edit',
+                    ])">
+                        {{ __('Users') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -93,6 +101,14 @@
                 'assetstatus.edit',
             ])">
                 {{ __('Asset Status') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs([
+                'users.index',
+                'users.create',
+                'users.show',
+                'users.edit',
+            ])">
+                {{ __('Users') }}
             </x-responsive-nav-link>
         </div>
 

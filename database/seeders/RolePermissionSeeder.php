@@ -15,10 +15,16 @@ class RolePermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
+            'index asset statuses',
             'show asset statuses',
             'create asset statuses',
             'edit asset statuses',
             'delete asset statuses',
+            'index user',
+            'show user',
+            'create user',
+            'edit user',
+            'delete user',
         ];
 
         foreach ($permissions as $permission) {
@@ -27,12 +33,21 @@ class RolePermissionSeeder extends Seeder
 
         $roles = [
             'admin' => [
+                'index asset statuses',
                 'show asset statuses',
                 'create asset statuses',
                 'edit asset statuses',
                 'delete asset statuses',
+                'index user',
+                'show user',
+                'create user',
+                'edit user',
+                'delete user',
             ],
-            'user' => ['show asset statuses']
+            'user' => [
+                'index asset statuses',
+                'show asset statuses'
+            ]
         ];
 
         foreach ($roles as $roleName => $rolePermissions) {
