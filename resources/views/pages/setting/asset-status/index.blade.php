@@ -9,20 +9,21 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-4">
             <section>
                 @if (session('success'))
-                <div class="flex items-center p-4 bg-emerald-500 text-white rounded-xl"
-                    role="alert">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div class="ml-3 text-sm font-reguler">
-                        {{ session('success') }}
+                    <div class="flex items-center p-4 bg-emerald-500 text-white rounded-xl" role="alert">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div class="ml-3 text-sm font-reguler">
+                            {{ session('success') }}
+                        </div>
                     </div>
-                </div>
                 @endif
             </section>
-            <a href="{{ route('assetstatus.create') }}"
-                class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">
-                <i class="fa-solid fa-circle-plus"></i>
-                <span>Tambah</span>
-            </a>
+            @can('create asset statuses')
+                <a href="{{ route('assetstatus.create') }}"
+                    class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span>Tambah</span>
+                </a>
+            @endcan
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="relative overflow-x-auto">
@@ -42,17 +43,23 @@
                                         </th>
                                         <td class="px-6 py-4">{{ $asset->name }}</td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ route('assetstatus.show', $asset->id) }}"
-                                                class="bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">detail</a>
-                                            <a href="{{ route('assetstatus.edit', $asset->id) }}"
-                                                class="bg-amber-500 hover:bg-amber-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">edit</a>
-                                            <form action="{{ route('assetstatus.destroy', $asset->id) }}" method="post"
-                                                class="inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="bg-red-500 hover:bg-red-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">delete</button>
-                                            </form>
+                                            @can('show asset statuses')
+                                                <a href="{{ route('assetstatus.show', $asset->id) }}"
+                                                    class="bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">detail</a>
+                                            @endcan
+                                            @can('edit asset statuses')
+                                                <a href="{{ route('assetstatus.edit', $asset->id) }}"
+                                                    class="bg-amber-500 hover:bg-amber-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">edit</a>
+                                            @endcan
+                                            @can('delete asset statuses')
+                                                <form action="{{ route('assetstatus.destroy', $asset->id) }}" method="post"
+                                                    class="inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="bg-red-500 hover:bg-red-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">delete</button>
+                                                </form>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @empty
