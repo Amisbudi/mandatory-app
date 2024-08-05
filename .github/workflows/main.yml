@@ -18,4 +18,5 @@ jobs:
           password: ${{ secrets.PASS }}
           script: |
             cd ~/mandatory.*
-            git pull 
+            git pull \
+            php artisan migrate
