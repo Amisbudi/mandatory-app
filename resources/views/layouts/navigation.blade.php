@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('My Asstes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('assetstatus.index')" :active="request()->routeIs([
                         'assetstatus.index',
@@ -24,6 +24,219 @@
                         {{ __('Asset Status') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <li class="relative list-none">
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div>Assets Man</div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Perhitungan') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </li>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <li class="relative list-none">
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div>Document Man</div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Perhitungan') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </li>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <li class="relative list-none">
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div>Inventory Man</div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Perhitungan') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </li>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <li class="relative list-none">
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div>User Man</div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Perhitungan') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </li>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('')">
+                        {{ __('Approval') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('')">
+                        {{ __('Report') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <li class="relative list-none">
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div>Setup</div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Maintenance') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Alerts') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Custom Fields') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Database') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Role & Permiss') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">
+                                    {{ __('Settings') }}
+                                </x-dropdown-link>
+                                <div class="relative">
+                                    <button id="settings-button"
+                                        class="flex justify-between items-center w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 dark:text-gray-400 bg-white dark:bg-gray-800 focus:outline-none transition ease-in-out duration-150">
+                                        {{ __('Settings') }}
+                                        <svg class="ml-2 fill-current h-4 w-4 transform -rotate-90"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <div id="settings-submenu"
+                                        class="hidden absolute left-full top-0 mt-2 w-48 bg-white shadow-lg rounded-md">
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Asset Status') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Brands') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Asset Category') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Company') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Departement') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Features') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Manufacturer') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Models') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Suppliers') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Types') }}
+                                        </x-dropdown-link>
+                                    </div>
+                                </div>
+                            </x-slot>
+                        </x-dropdown>
+                    </li>
+                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -122,3 +335,44 @@
         </div>
     </div>
 </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var settingsButton = document.getElementById('settings-button');
+        var settingsSubmenu = document.getElementById('settings-submenu');
+
+        var allSubmenus = [settingsSubmenu];
+        var allButtons = [settingsButton];
+
+        function closeAllSubmenus() {
+            allSubmenus.forEach(function(submenu) {
+                submenu.classList.add('hidden');
+            });
+        }
+
+        function toggleSubmenu(button, submenu) {
+            closeAllSubmenus();
+            submenu.classList.toggle('hidden');
+        }
+
+        allButtons.forEach(function(button, index) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                toggleSubmenu(button, allSubmenus[index]);
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!allButtons.some(button => button.contains(event.target)) &&
+                !allSubmenus.some(submenu => submenu.contains(event.target))) {
+                closeAllSubmenus();
+            }
+        });
+
+        allSubmenus.forEach(function(submenu) {
+            submenu.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        });
+    });
+</script>

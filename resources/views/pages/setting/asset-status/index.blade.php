@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-4">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 space-y-4">
             <section>
                 @if (session('success'))
                 <div class="flex items-center p-4 bg-emerald-500 text-white rounded-xl"
