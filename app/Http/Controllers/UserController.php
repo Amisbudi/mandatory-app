@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -51,8 +52,12 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
+        $roles = Role::pluck('name','name')->all();
+        $user_role = $user->roles->pluck('name','name')->all();
         return view('pages.user.edit')->with([
-            'user' => $user
+            'user' => $user,
+            'roles' => $roles,
+            'user_role' => $user_role
         ]);
     }
 

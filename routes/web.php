@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Setting\AssetStatusController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,10 @@ Route::prefix('setting')->group(function () {
     Route::resource('assetstatus', AssetStatusController::class);
 });
 
+
+
 Route::middleware('auth')->group(function () {
+    Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class)->middleware('role:admin');
 });
 
