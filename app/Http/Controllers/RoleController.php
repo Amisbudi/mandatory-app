@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::orderBy('id','DESC')->paginate(5);
+        $roles = Role::orderBy('id', 'DESC')->paginate(5);
         return view('pages.role.index')->with([
             'roles' => $roles
         ]);
@@ -58,7 +58,7 @@ class RoleController extends Controller
     public function show(string $id)
     {
         $role = Role::find($id);
-        $role_permissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
+        $role_permissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
             ->where("role_has_permissions.role_id", $id)
             ->get();
         return view('pages.role.show')->with([
@@ -75,10 +75,10 @@ class RoleController extends Controller
         $role = Role::find($id);
         $permissions = Permission::all();
         $role_permissions = DB::table('role_has_permissions')
-        ->join('permissions', 'role_has_permissions.permission_id', '=', 'permissions.id')
-        ->where('role_has_permissions.role_id', $id)
-        ->pluck('permissions.name', 'role_has_permissions.permission_id')
-        ->all();
+            ->join('permissions', 'role_has_permissions.permission_id', '=', 'permissions.id')
+            ->where('role_has_permissions.role_id', $id)
+            ->pluck('permissions.name', 'role_has_permissions.permission_id')
+            ->all();
 
         return view('pages.role.edit')->with([
             'role' => $role,
@@ -92,7 +92,21 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'permissions' => 'required|array',
+        ]);
+
+        $role = Role::findOrFail($id);
+        $role->update([
+            'name' => $request->input('name'),
+        ]);
+
+        $permissions = $request->input('permissions');
+        $validPermissions = Permission::whereIn('id', $permissions)->pluck('id')->toArray();
+        $role->syncPermissions($validPermissions);
+
+        return redirect()->route('roles.index')->with('success', 'berhasil update!');
     }
 
     /**
@@ -103,6 +117,6 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('roles.index')->with('success','berhasil dihapus!');
+        return redirect()->route('roles.index')->with('success', 'berhasil dihapus!');
     }
 }

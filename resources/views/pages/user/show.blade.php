@@ -35,6 +35,11 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h3>{{ $user->name }}</h3>
                     <p>{{ $user->email }}</p>
+                    <ul>
+                        @foreach ($roles as $role)
+                        <li>{{ $role->name }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
