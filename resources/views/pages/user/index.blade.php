@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Asset Status') }}
+            {{ __('Users') }}
         </h2>
     </x-slot>
 
@@ -17,8 +17,8 @@
                     </div>
                 @endif
             </section>
-            @can('create asset statuses')
-                <a href="{{ route('assetstatus.create') }}"
+            @can('create user')
+                <a href="{{ route('users.create') }}"
                     class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">
                     <i class="fa-solid fa-circle-plus"></i>
                     <span>Tambah</span>
@@ -32,27 +32,29 @@
                                 <tr>
                                     <th scope="col" class="px-6 py-3">No</th>
                                     <th scope="col" class="px-6 py-3">Name</th>
+                                    <th scope="col" class="px-6 py-3">Email</th>
                                     <th scope="col" class="px-6 py-3">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($asset_status as $key => $asset)
+                                @forelse ($users as $key => $user)
                                     <tr>
                                         <th scope="row" class="px-6 py-4 whitespace-nowrap">
-                                            {{ $asset_status->perPage() * ($asset_status->currentPage() - 1) + $key + 1 }}
+                                            {{ $users->perPage() * ($users->currentPage() - 1) + $key + 1 }}
                                         </th>
-                                        <td class="px-6 py-4">{{ $asset->name }}</td>
+                                        <td class="px-6 py-4">{{ $user->name }}</td>
+                                        <td class="px-6 py-4">{{ $user->email }}</td>
                                         <td class="px-6 py-4">
-                                            @can('show asset statuses')
-                                                <a href="{{ route('assetstatus.show', $asset->id) }}"
+                                            @can('show user')
+                                                <a href="{{ route('users.show', $user->id) }}"
                                                     class="bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">detail</a>
                                             @endcan
-                                            @can('edit asset statuses')
-                                                <a href="{{ route('assetstatus.edit', $asset->id) }}"
+                                            @can('edit user')
+                                                <a href="{{ route('users.edit', $user->id) }}"
                                                     class="bg-amber-500 hover:bg-amber-600 px-3 py-2 rounded-lg text-white transition-all ease-in-out">edit</a>
                                             @endcan
-                                            @can('delete asset statuses')
-                                                <form action="{{ route('assetstatus.destroy', $asset->id) }}" method="post"
+                                            @can('delete user')
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="post"
                                                     class="inline-block">
                                                     @csrf
                                                     @method('DELETE')
@@ -64,13 +66,13 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3">Asset data not found.</td>
+                                        <td colspan="3">Users data not found.</td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
-                    {{ $asset_status->links() }}
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>

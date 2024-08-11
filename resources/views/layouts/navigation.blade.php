@@ -23,6 +23,30 @@
                     ])">
                         {{ __('Asset Status') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs([
+                        'users.index',
+                        'users.create',
+                        'users.show',
+                        'users.edit',
+                    ])">
+                        {{ __('Users') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs([
+                        'roles.index',
+                        'roles.create',
+                        'roles.show',
+                        'roles.edit',
+                    ])">
+                        {{ __('Roles') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('permissions.index')" :active="request()->routeIs([
+                        'permissions.index',
+                        'permissions.create',
+                        'permissions.show',
+                        'permissions.edit',
+                    ])">
+                        {{ __('Permissions') }}
+                    </x-nav-link>
                 </div>
             </div>
 
