@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Setting;
+namespace Database\Seeders;
 
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,7 +14,7 @@ class AssetStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('asset_status')->insert([
+        DB::table('asset_statuses')->insert([
             [
                 'name' => 'Bagus',
                 'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
@@ -43,7 +43,7 @@ class AssetStatusSeeder extends Seeder
                 'name' => 'Diperbaiki',
                 'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
                 'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
-            ]
+            ],
         ]);
     }
 }

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Seeders\Setting\AssetStatusSeeder;
+use Database\Seeders\AssetStatusSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             /* Main */
             UserSeeder::class,
             /* Setting Seeders */
-            AssetStatusSeeder::class
+            AssetStatusSeeder::class,
+            AssetCategorySeeder::class,
         ]);
     }
 }
