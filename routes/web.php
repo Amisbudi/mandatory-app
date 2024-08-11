@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Setting\AssetStatusController;
@@ -20,16 +21,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('setting')->group(function () {
-    // Route::resource('assetstatus', AssetStatusController::class)->middleware('role:admin');
+Route::middleware('auth')->prefix('setting')->group(function () {
     Route::resource('assetstatus', AssetStatusController::class);
-});
-
-
-
-Route::middleware('auth')->group(function () {
     Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class)->middleware('role:admin');
+    Route::resource('permissions', PermissionController::class);
+    Route::resource('users', UserController::class);
 });
 
 require __DIR__.'/auth.php';
