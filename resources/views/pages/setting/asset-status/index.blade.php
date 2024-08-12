@@ -12,31 +12,34 @@
     </x-slot>
 
     <div class="container mx-auto p-8">
-        <!-- Modal -->
-        <div id="statusModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-                <h2 class="text-xl font-bold mb-4">Add Asset Status</h2>
-                <div class="mb-5">
-                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                        Add Status Name</label>
-                    <input type="text" id="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter Asset Status Name" required />
-                </div>
-                <div class="mb-5">
-                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                        Description</label>
-                    <input type="text" id="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter Description" required />
-                </div>
-                <div class="mt-4 flex justify-end">
-                    <button id="closeModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-md mr-2">Cancel</button>
-                    <button id="saveStatusBtn" class="bg-green-500 text-white px-4 py-2 rounded-md">Save</button>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <!-- Modal ADD NEW ASSET STATUS-->
+            <div id="statusModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+                    <h2 class="text-xl font-bold mb-4">Add Asset Status</h2>
+                    <div class="mb-5">
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Add Status Name</label>
+                        <input type="text" id="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter Asset Status Name" required />
+                    </div>
+                    <div class="mb-5">
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Description</label>
+                        <input type="text" id="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter Description" required />
+                    </div>
+                    <div class="mt-4 flex justify-end gap-2">
+                        <button id="saveStatusBtn"
+                            class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">Simpan</button>
+                        <button id="closeModalBtn"
+                            class="text-gray-500 bg-gray-300 hover:bg-gray-400 py-2.5 px-5 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm">Batal</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <!-- Modal ADD NEW ASSET STATUS-->
             <div class="flex justify-between items-center mb-4">
                 <div class="relative">
                     <input type="text" id="search" placeholder="Search"
@@ -55,8 +58,20 @@
                         <i class="fa-solid fa-circle-plus"></i>
                         <span>Add New Asset Status</span>
                     </button>
-                    <button
+                    <button id="actionsButton"
                         class="inline-block space-x-1 bg-sky-200 hover:bg-sky-300 py-2.5 px-5 text-sky-600 rounded-lg text-sm font-medium">Actions</button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownMenu"
+                        class="origin-top-right absolute right-12 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="actionsButton">
+                            <a href="#"
+                                class="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                                role="menuitem">Export to Excel</a>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                                role="menuitem">Export to PDF</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -67,7 +82,14 @@
                             <th class="py-3 px-4 border-b text-left">
                                 <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
                             </th>
-                            <th class="py-3 px-4 border-b text-left">Asset Status</th>
+                            <th class="flex gap-2 py-3 px-4 border-b text-left"><svg xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                    class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                </svg> Asset Status</th>
                             <th class="py-3 px-4 border-b text-left">Description</th>
                             <th class="py-3 px-4 border-b text-left">Actions</th>
                         </tr>
@@ -88,7 +110,8 @@
                         </select>
                     </div>
                     <div class="gap-5">
-                        <button id="prev" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-l"> < </button>
+                        <button id="prev" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-l">
+                            < </button>
                         </button>
                         <span id="page-info" class="px-4 py-2">1</span>
                         <button id="next" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-r"> >
@@ -99,7 +122,22 @@
         </div>
     </div>
     <script>
-        // modal
+        // dropdown menu
+        document.getElementById('actionsButton').addEventListener('click', function() {
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', function(e) {
+            var actionsButton = document.getElementById('actionsButton');
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            if (!actionsButton.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+        // end dropdown menu
+
+        // modal add new asset status
         document.getElementById('addStatusBtn').addEventListener('click', function() {
             document.getElementById('statusModal').classList.remove('hidden');
         });
@@ -111,7 +149,7 @@
         document.getElementById('saveStatusBtn').addEventListener('click', function() {
             let status = document.getElementById('statusInput').value;
             console.log('Status Saved:',
-                status); // Anda dapat mengganti ini dengan logika lain, seperti mengirim status ke server.
+                status);
             document.getElementById('statusModal').classList.add('hidden');
         });
         // end modal
@@ -207,9 +245,10 @@
                             </td>
                             <td class="py-3 px-4 border-b">
                                 <span class="inline-block align-middle">
-                                    <svg class="h-5 w-5 text-yellow-400 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-4.553a1 1 0 00-.23-1.516l-6.124-3.06a2 2 0 00-2.398.165L4.353 8.162a1 1 0 000 1.414L9 14v3a3 3 0 00.879 2.121l4 4a2 2 0 002.829 0l4.414-4.414a2 2 0 000-2.829l-4.414-4.414a2 2 0 00-2.829 0l-1.415 1.414a1 1 0 000 1.414l1.415 1.415z" />
-                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                </svg>
                                 </span>
                                 ${item.status}
                             </td>
