@@ -15,14 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('My Asstes') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('assetstatus.index')" :active="request()->routeIs([
+                    {{-- <x-nav-link :href="route('assetstatus.index')" :active="request()->routeIs([
                         'assetstatus.index',
                         'assetstatus.create',
                         'assetstatus.show',
                         'assetstatus.edit',
                     ])">
                         {{ __('Asset Status') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
 
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -31,7 +31,7 @@
                             <x-slot name="trigger">
                                 <button
                                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    <div>Assets Man</div>
+                                    <div>Assets</div>
 
                                     <div class="ms-1">
                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@
                             <x-slot name="trigger">
                                 <button
                                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    <div>Document Man</div>
+                                    <div>Documents</div>
 
                                     <div class="ms-1">
                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@
                             <x-slot name="trigger">
                                 <button
                                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    <div>Inventory Man</div>
+                                    <div>Inventory</div>
 
                                     <div class="ms-1">
                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@
                             <x-slot name="trigger">
                                 <button
                                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    <div>User Man</div>
+                                    <div>Users</div>
 
                                     <div class="ms-1">
                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -194,13 +194,13 @@
                                         <svg class="ml-2 fill-current h-4 w-4 transform -rotate-90"
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd"
-                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                                 clip-rule="evenodd" />
                                         </svg>
                                     </button>
                                     <div id="settings-submenu"
-                                        class="hidden absolute left-full top-0 mt-2 w-48 bg-white shadow-lg rounded-md">
-                                        <x-dropdown-link :href="route('dashboard')">
+                                        class="hidden absolute left-full top-[-222px] ml-1 w-48 border bg-white shadow-lg rounded-md">
+                                        <x-dropdown-link :href="route('assetstatus.index')">
                                             {{ __('Asset Status') }}
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('dashboard')">
@@ -239,42 +239,81 @@
 
             </div>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+            <div class="flex">
+                <!-- Notification Dropdown -->
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <div><svg xmlns="http://www.w3.org/2000/svg" fill="#4B90FE" viewBox="0 0 24 24" stroke="#4B90FE" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a7.002 7.002 0 00-6-6.917V3a1 1 0 10-2 0v1.083A7.002 7.002 0 004 11v3.159c0 .538-.214 1.055-.595 1.438L2 17h13z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19a3 3 0 01-6 0" />
+                                </svg></div>
+                                <!-- Notification Count Badge -->
+                                <span
+                                    class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full transform -translate-y-2/9">
+                                    3
+                                </span>
+                            </button>
+                        </x-slot>
 
-                            <div class="ms-1">
+                        <x-slot name="content">
+                            <div class="py-1">
+                                <x-dropdown-link href="#">
+                                    {{ __('Notification 1') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link href="#">
+                                    {{ __('Notification 2') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link href="#">
+                                    {{ __('Notification 3') }}
+                                </x-dropdown-link>
+                                <!-- Add more notifications as needed -->
+                            </div>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+
+                <!-- Settings Dropdown -->
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                {{-- <div>{{ Auth::user()->name }}</div> --}}
+                                <div><img src="{{ asset('assets/img/user.png') }}" class="w-8" alt=""
+                                        srcset=""></div>
+
+                                {{-- <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                         clip-rule="evenodd" />
                                 </svg>
-                            </div>
-                        </button>
-                    </x-slot>
+                            </div> --}}
+                            </button>
+                        </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Profile') }}
                             </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
             </div>
 
             <!-- Hamburger -->
@@ -374,5 +413,10 @@
                 event.stopPropagation();
             });
         });
+    });
+
+    document.getElementById('settings-button').addEventListener('click', function() {
+        var submenu = document.getElementById('settings-submenu');
+        submenu.classList.toggle('hidden');
     });
 </script>

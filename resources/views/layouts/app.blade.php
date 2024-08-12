@@ -14,6 +14,10 @@
         {{-- Font Awesome --}}
         <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
 
+        {{-- Flaticon --}}
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
