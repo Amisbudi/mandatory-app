@@ -11,37 +11,78 @@
         </h2>
     </x-slot>
 
+    <!-- MODAL ADD NEW ASSET STATUS-->
+    <div id="statusModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Add Asset Status</h2>
+            <div class="mb-5">
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Add Status Name</label>
+                <input type="text" id="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter Asset Status Name" autocomplete="off" required />
+            </div>
+            <div class="mb-5">
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Description</label>
+                <input type="text" id="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter Description" autocomplete="off" required />
+            </div>
+            <div class="mt-4 flex justify-end gap-2">
+                <button id="saveStatusBtn"
+                    class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">Simpan</button>
+                <button id="closeModalBtn"
+                    class="text-gray-500 bg-gray-300 hover:bg-gray-400 py-2.5 px-5 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm">Batal</button>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL ADD NEW ASSET STATUS-->
+    <!-- MODAL EDIT NEW ASSET STATUS-->
+    <div id="editModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Edit Asset Status</h2>
+            <div class="mb-5">
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Add Status Name</label>
+                <input type="text" id="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter Asset Status Name" autocomplete="off" required />
+            </div>
+            <div class="mb-5">
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Description</label>
+                <input type="text" id="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter Description" autocomplete="off" required />
+            </div>
+            <div class="mt-4 flex justify-end gap-2">
+                <button id="saveStatusBtn"
+                    class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">Simpan</button>
+                <button id="closeModal"
+                    class="text-gray-500 bg-gray-300 hover:bg-gray-400 py-2.5 px-5 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm">Batal</button>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL EDIT NEW ASSET STATUS-->
+    <!-- MODAL DELETE NEW ASSET STATUS-->
+    <div id="deleteModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 flex flex-col items-center">
+            <h2 class="text-xl font-bold mb-4">Konfirmasi Hapus Data</h2>
+            <p class="text-sm font-semibold text-gray-600 mb-4">Apakah Anda yakin untuk hapus data ini?</p>
+            <div class="mt-4 flex justify-end gap-2">
+                <button id="saveStatusBtn"
+                    class="inline-block space-x-1 bg-red-500 hover:bg-red-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">Simpan</button>
+                <button id="close"
+                    class="text-gray-500 bg-gray-300 hover:bg-gray-400 py-2.5 px-5 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm">Batal</button>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL DELETE NEW ASSET STATUS-->
     <div class="container mx-auto p-8">
         <div class="bg-white p-6 rounded-lg shadow-lg">
-            <!-- Modal ADD NEW ASSET STATUS-->
-            <div id="statusModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-                <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-                    <h2 class="text-xl font-bold mb-4">Add Asset Status</h2>
-                    <div class="mb-5">
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Add Status Name</label>
-                        <input type="text" id="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Enter Asset Status Name" required />
-                    </div>
-                    <div class="mb-5">
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Description</label>
-                        <input type="text" id="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Enter Description" required />
-                    </div>
-                    <div class="mt-4 flex justify-end gap-2">
-                        <button id="saveStatusBtn"
-                            class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">Simpan</button>
-                        <button id="closeModalBtn"
-                            class="text-gray-500 bg-gray-300 hover:bg-gray-400 py-2.5 px-5 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm">Batal</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal ADD NEW ASSET STATUS-->
             <div class="flex justify-between items-center mb-4">
-                <div class="relative">
+                <div class="relative z-10">
                     <input type="text" id="search" placeholder="Search"
                         class="border rounded-lg py-2 px-4 w-full pl-10">
                     <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
@@ -95,7 +136,7 @@
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        <!-- Rows will be inserted here by JavaScript -->
+
                     </tbody>
                 </table>
             </div>
@@ -121,38 +162,8 @@
             </div>
         </div>
     </div>
+
     <script>
-        // dropdown menu
-        document.getElementById('actionsButton').addEventListener('click', function() {
-            var dropdownMenu = document.getElementById('dropdownMenu');
-            dropdownMenu.classList.toggle('hidden');
-        });
-
-        window.addEventListener('click', function(e) {
-            var actionsButton = document.getElementById('actionsButton');
-            var dropdownMenu = document.getElementById('dropdownMenu');
-            if (!actionsButton.contains(e.target)) {
-                dropdownMenu.classList.add('hidden');
-            }
-        });
-        // end dropdown menu
-
-        // modal add new asset status
-        document.getElementById('addStatusBtn').addEventListener('click', function() {
-            document.getElementById('statusModal').classList.remove('hidden');
-        });
-
-        document.getElementById('closeModalBtn').addEventListener('click', function() {
-            document.getElementById('statusModal').classList.add('hidden');
-        });
-
-        document.getElementById('saveStatusBtn').addEventListener('click', function() {
-            let status = document.getElementById('statusInput').value;
-            console.log('Status Saved:',
-                status);
-            document.getElementById('statusModal').classList.add('hidden');
-        });
-        // end modal
         const data = [{
                 id: 1,
                 status: 'Broken',
@@ -168,41 +179,6 @@
                 status: 'Broken',
                 description: 'The asset is not functional.'
             },
-            {
-                id: 4,
-                status: 'Broken',
-                description: 'The asset is not functional.'
-            },
-            {
-                id: 5,
-                status: 'Broken',
-                description: 'The asset is not functional.'
-            },
-            {
-                id: 6,
-                status: 'Broken',
-                description: 'The asset is not functional.'
-            },
-            {
-                id: 7,
-                status: 'Broken',
-                description: 'The asset is not functional.'
-            },
-            {
-                id: 8,
-                status: 'Broken',
-                description: 'The asset is not functional.'
-            },
-            {
-                id: 9,
-                status: 'Broken',
-                description: 'The asset is not functional.'
-            },
-            {
-                id: 10,
-                status: 'Broken',
-                description: 'The asset is not functional.'
-            }
         ];
 
         const rowsPerPageSelect = document.getElementById('rowsPerPage');
@@ -254,12 +230,12 @@
                             </td>
                             <td class="py-3 px-4 border-b">${item.description}</td>
                             <td class="py-3 px-4 border-b">
-                                <button class="bg-yellow-400 text-white px-3 py-1 rounded-md mr-2">
+                                <button id="editStatusBtn" class="bg-yellow-400 text-white px-3 py-1 rounded-md mr-2">
                                     <svg class="h-4 w-4 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m6-4H9m6 8H9m10 0a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2h10z" />
                                     </svg>
                                 </button>
-                                <button class="bg-red-500 text-white px-3 py-1 rounded-md">
+                                <button id="deleteStatusBtn" class="bg-red-500 text-white px-3 py-1 rounded-md">
                                     <svg class="h-4 w-4 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.139 21H7.861a2 2 0 01-1.994-1.858L5 7m5-3h4m-4 0a2 2 0 012-2h0a2 2 0 012 2m-4 0h4m-4 0V3a2 2 0 014 0v1m5 0h-4m4 0V7H7V5m0 0h10" />
                                     </svg>
@@ -273,5 +249,54 @@
         }
 
         displayTable();
+    </script>
+    <script>
+        // modal add new asset status
+        document.getElementById('addStatusBtn').addEventListener('click', function() {
+            document.getElementById('statusModal').classList.remove('hidden');
+            document.getElementById('searchContainer').classList.add('hidden'); // Hide search when modal is shown
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('statusModal').classList.add('hidden');
+            document.getElementById('searchContainer').classList.remove(
+                'hidden'); // Show search when modal is hidden
+        });
+        // modal edit asset status
+        document.getElementById('editStatusBtn').addEventListener('click', function() {
+            document.getElementById('editModal').classList.remove('hidden');
+            document.getElementById('searchContainer').classList.add('hidden'); // Hide search when modal is shown
+        });
+
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('editModal').classList.add('hidden');
+            document.getElementById('searchContainer').classList.remove(
+                'hidden'); // Show search when modal is hidden
+        });
+                // modal delete asset status
+        document.getElementById('deleteStatusBtn').addEventListener('click', function() {
+            document.getElementById('deleteModal').classList.remove('hidden');
+            document.getElementById('searchContainer').classList.add('hidden'); // Hide search when modal is shown
+        });
+
+        document.getElementById('close').addEventListener('click', function() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            document.getElementById('searchContainer').classList.remove(
+                'hidden'); // Show search when modal is hidden
+        });
+        // dropdown menu
+        document.getElementById('actionsButton').addEventListener('click', function() {
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', function(e) {
+            var actionsButton = document.getElementById('actionsButton');
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            if (!actionsButton.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+        // end dropdown menu
     </script>
 </x-app-layout>
