@@ -36,14 +36,11 @@ class ManufactureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:225'
+            'name' => 'required|max:225',
+            'detail' => 'required|max:225',
         ], [
             'name.required' => 'The name of the manufacture is required!',
             'name.max' => 'The name of the manufacture cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'detail' => 'required|max:225'
-        ], [
             'detail.required' => 'The name of the manufacture is required!',
             'detail.max' => 'The detail of the manufacture cannot be more than 225 characters.',
         ]);
@@ -94,14 +91,11 @@ class ManufactureController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required|max:225'
+            'name' => 'required|max:225',
+            'detail' => 'required|max:225'
         ], [
             'name.required' => 'The name of the manufacture is required!',
             'name.max' => 'The name of the manufacture cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'detail' => 'required|max:225'
-        ], [
             'detail.required' => 'The name of the manufacture is required!',
             'detail.max' => 'The detail of the manufacture cannot be more than 225 characters.',
         ]);

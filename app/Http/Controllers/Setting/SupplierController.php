@@ -13,12 +13,12 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $Supplier = Supplier::paginate(5);
+        $supplier = Supplier::paginate(5);
         /* JSON */
         // return response()->json($Supplier, 200);
         /* View Blade */
         return view('pages.setting.supplier.index')->with([
-            'Supplier' => $Supplier
+            'supplier' => $supplier
         ], 200);
     }
 
@@ -36,56 +36,31 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:225'
+            'name' => 'required|max:225',
+            'name_of_factory' => 'required|max:225',
+            'type_of_goods' => 'required|max:225',
+            'address' => 'required',
+            'phone' => 'required|max:225',
+            'information' => 'required|max:225',
+            'purchase' => 'required|max:225',
+            'maintenance' => 'required|max:225',
+            'cost' => 'required|max:225'
         ], [
             'name.required' => 'The name of the supplier is required!',
             'name.max' => 'The name of the supplier cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'name_of_factory' => 'required|max:225'
-        ], [
             'name_of_factory.required' => 'The name of the factory is required!',
             'name_of_factory.max' => 'The name of the factory cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'type_of_goods' => 'required|max:225'
-        ], [
             'type_of_goods.required' => 'The type of the item is required!',
-            'name.max' => 'The type of the item cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'type_of_goods' => 'required|max:225'
-        ], [
-            'type_of_goods.required' => 'The address of the supplier is required!',
-            'type_of_goods.max' => 'The address of the supplier address cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'phone' => 'required|max:225'
-        ], [
+            'type_of_goods.max' => 'The type of the item cannot be more than 225 characters.',
+            'address.required' => 'The address of the supplier is required!',
             'phone.required' => 'The name of the supplier is required!',
             'phone.max' => 'The name of the supplier cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'information' => 'required|max:225'
-        ], [
             'information.required' => 'The information of the purchase is required!',
-            'name.max' => 'The information of the purchase cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'purchase_date' => 'required|max:225'
-        ], [
-            'purchase_date.required' => 'The date of the purchase is required!',
-            'purchase_date.max' => 'The date of the purchase cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'maintenance' => 'required|max:225'
-        ], [
+            'information.max' => 'The information of the purchase cannot be more than 225 characters.',
+            'purchase.required' => 'The date of the purchase is required!',
+            'purchase.max' => 'The date of the purchase cannot be more than 225 characters.',
             'maintenance.required' => 'The maintenance is required!',
             'maintenance.max' => 'The maintenance cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'cost' => 'required|max:225'
-        ], [
             'cost.required' => 'The cost of the maintenance is required!',
             'cost.max' => 'The costs of the maintenance cannot be more than 225 characters.',
         ]);
@@ -94,10 +69,10 @@ class SupplierController extends Controller
             'name' => $request->name,
             'name_of_factory' => $request->name_of_factory,
             'type_of_goods' => $request->type_of_goods,
-            'type_of_goods' => $request->type_of_goods,
+            'address' => $request->address,
             'phone' => $request->phone,
             'information' => $request->information,
-            'purchase_date' => $request->purchase_date,
+            'purchase' => $request->purchase,
             'maintenance' => $request->maintenance,
             'cost' => $request->cost
         ]);
@@ -114,12 +89,12 @@ class SupplierController extends Controller
      */
     public function show(string $id)
     {
-        $Supplier = Supplier::findOrFail($id);
+        $supplier = Supplier::findOrFail($id);
         /* JSON */
         // return response()->json($Supplier, 200);
         /* View Blade */
         return view('pages.setting.supplier.show')->with([
-            'Supplier' => $Supplier
+            'supplier' => $supplier
         ], 200);
     }
 
@@ -128,12 +103,12 @@ class SupplierController extends Controller
      */
     public function edit(string $id)
     {
-        $Supplier = Supplier::findOrFail($id);
+        $supplier = Supplier::findOrFail($id);
         /* JSON */
         // return response()->json($Supplier, 200);
         /* View Blade */
         return view('pages.setting.supplier.edit')->with([
-            'Supplier' => $Supplier
+            'supplier' => $supplier
         ], 200);
     }
 
@@ -143,70 +118,45 @@ class SupplierController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required|max:225'
+            'name' => 'required|max:225',
+            'name_of_factory' => 'required|max:225',
+            'type_of_goods' => 'required|max:225',
+            'address' => 'required',
+            'phone' => 'required|max:225',
+            'information' => 'required|max:225',
+            'purchase' => 'required|max:225',
+            'maintenance' => 'required|max:225',
+            'cost' => 'required|max:225'
         ], [
             'name.required' => 'The name of the supplier is required!',
             'name.max' => 'The name of the supplier cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'name_of_factory' => 'required|max:225'
-        ], [
             'name_of_factory.required' => 'The name of the factory is required!',
             'name_of_factory.max' => 'The name of the factory cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'type_of_goods' => 'required|max:225'
-        ], [
             'type_of_goods.required' => 'The type of the item is required!',
-            'name.max' => 'The type of the item cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'type_of_goods' => 'required|max:225'
-        ], [
-            'type_of_goods.required' => 'The address of the supplier is required!',
-            'type_of_goods.max' => 'The address of the supplier address cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'phone' => 'required|max:225'
-        ], [
+            'type_of_goods.max' => 'The type of the item cannot be more than 225 characters.',
+            'address.required' => 'The address of the supplier is required!',
             'phone.required' => 'The name of the supplier is required!',
             'phone.max' => 'The name of the supplier cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'information' => 'required|max:225'
-        ], [
             'information.required' => 'The information of the purchase is required!',
-            'name.max' => 'The information of the purchase cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'purchase_date' => 'required|max:225'
-        ], [
-            'purchase_date.required' => 'The date of the purchase is required!',
-            'purchase_date.max' => 'The date of the purchase cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'maintenance' => 'required|max:225'
-        ], [
+            'information.max' => 'The information of the purchase cannot be more than 225 characters.',
+            'purchase.required' => 'The date of the purchase is required!',
+            'purchase.max' => 'The date of the purchase cannot be more than 225 characters.',
             'maintenance.required' => 'The maintenance is required!',
             'maintenance.max' => 'The maintenance cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'cost' => 'required|max:225'
-        ], [
             'cost.required' => 'The cost of the maintenance is required!',
             'cost.max' => 'The costs of the maintenance cannot be more than 225 characters.',
         ]);
 
-        $Supplier = Supplier::findOrFail($id);
+        $supplier = Supplier::findOrFail($id);
 
-        $Supplier->update([
+        $supplier->update([
             'name' => $request->name,
             'name_of_factory' => $request->name_of_factory,
             'type_of_goods' => $request->type_of_goods,
-            'type_of_goods' => $request->type_of_goods,
+            'address' => $request->address,
             'phone' => $request->phone,
             'information' => $request->information,
-            'purchase_date' => $request->purchase_date,
+            'purchase' => $request->purchase,
             'maintenance' => $request->maintenance,
             'cost' => $request->cost
         ]);
@@ -223,8 +173,8 @@ class SupplierController extends Controller
      */
     public function destroy(string $id)
     {
-        $Supplier = Supplier::findOrFail($id);
-        $Supplier->delete();
+        $supplier = Supplier::findOrFail($id);
+        $supplier->delete();
         /* JSON */
         // return response()->json([
         //     'message' => 'supplier has been deleted!'

@@ -36,20 +36,14 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:225'
+            'name' => 'required|max:225',
+            'name_of_company' => 'required|max:225',
+            'head_of_department' => 'required|max:225'
         ], [
             'name.required' => 'The name of the department is required!',
             'name.max' => 'The name of the department cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'name_of_company' => 'required|max:225'
-        ], [
             'name_of_company.required' => 'The name of the department is required!',
             'name_of_company.max' => 'The name of the company cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'head_of_department' => 'required|max:225'
-        ], [
             'head_of_department.required' => 'The name of the department is required!',
             'head_of_department.max' => 'The head of the department cannot be more than 225 characters.',
         ]);
@@ -86,7 +80,7 @@ class DepartmentController extends Controller
      */
     public function edit(string $id)
     {
-        $department = department::findOrFail($id);
+        $department = Department::findOrFail($id);
         /* JSON */
         // return response()->json($department, 200);
         /* View Blade */
@@ -101,20 +95,14 @@ class DepartmentController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required|max:225'
+            'name' => 'required|max:225',
+            'name_of_company' => 'required|max:225',
+            'head_of_department' => 'required|max:225'
         ], [
             'name.required' => 'The name of the department is required!',
             'name.max' => 'The name of the department cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'name_of_company' => 'required|max:225'
-        ], [
             'name_of_company.required' => 'The name of the department is required!',
             'name_of_company.max' => 'The name of the company cannot be more than 225 characters.',
-        ]);
-        $request->validate([
-            'head_of_department' => 'required|max:225'
-        ], [
             'head_of_department.required' => 'The name of the department is required!',
             'head_of_department.max' => 'The head of the department cannot be more than 225 characters.',
         ]);
@@ -137,7 +125,7 @@ class DepartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = department::findOrFail($id);
+        $department = Department::findOrFail($id);
         $department->delete();
         /* JSON */
         // return response()->json([
