@@ -4,6 +4,9 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Setting\AssetStatusController;
+use App\Http\Controllers\Setting\DepartmentController;
+use App\Http\Controllers\Setting\ManufactureController;
+use App\Http\Controllers\Setting\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +26,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('setting')->group(function () {
     Route::resource('assetstatus', AssetStatusController::class);
+    Route::resource('supplier', SupplierController::class);
+    Route::resource('manufacture', ManufactureController::class);
+    Route::resource('department', DepartmentController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('users', UserController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
