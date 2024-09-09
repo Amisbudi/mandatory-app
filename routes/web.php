@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Setting\BrandController;
+use App\Http\Controllers\Setting\SetupModelController;
+use App\Http\Controllers\Setting\CompanyController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -8,6 +11,7 @@ use App\Http\Controllers\Setting\DepartmentController;
 use App\Http\Controllers\Setting\ManufactureController;
 use App\Http\Controllers\Setting\SupplierController;
 use App\Http\Controllers\UserController;
+use App\Models\Setting\SetupModel;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +33,9 @@ Route::middleware('auth')->prefix('setting')->group(function () {
     Route::resource('supplier', SupplierController::class);
     Route::resource('manufacture', ManufactureController::class);
     Route::resource('department', DepartmentController::class);
+    route::resource('brands', BrandController::class);
+    route::resource('setupModel', SetupModelController::class);
+    Route::resource('companies', CompanyController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('users', UserController::class);
