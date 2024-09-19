@@ -242,7 +242,7 @@
                                         <x-dropdown-link :href="route('dashboard')">
                                             {{ __('Features') }}
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('dashboard')">
+                                        <x-dropdown-link :href="route('manufacture.index')">
                                             {{ __('Manufacturer') }}
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('dashboard')">
