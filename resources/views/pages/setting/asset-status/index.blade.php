@@ -72,11 +72,19 @@
                 <table class="min-w-full bg-white border">
                     <thead>
                         <tr>
-                            <th class="py-3 px-4 border-b text-center">No
+                            <th scope="col" class="px-6 py-3 text-center">
+                                <input type="checkbox" class="rounded-md" onchange="checkAll(this)" name="check">
                             </th>
-                            <th class="py-3 px-4 border-b text-left">Asset Status</th>
-                            <th class="py-3 px-4 border-b text-left">Description</th>
-                            <th class="py-3 px-4 border-b text-left">Actions</th>
+                            <th class="px-6 py-4 border-b text-center">No
+                            </th>
+                            <th class="px-6 py-4 border-b text-left">Asset Status</th>
+                            <th class="px-6 py-4 border-b text-left">Description</th>
+                            <th class="px-6 py-4 border-b text-right"><button id="deleteButton" type="hidden"
+                                    class="bg-red-500 hover:bg-bg-red-300 px-3 py-1 rounded-md text-xs text-white"><i
+                                        class="fas fa-trash"></i>
+                                </button>
+                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -85,17 +93,20 @@
                         @endphp
                         @foreach ($asset_status as $a)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="col" class="px-6 py-3 text-center">
+                                    <input type="checkbox" class="rounded-md" name="user_id[]">
+                                </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
                                     {{ $no++ }}
                                 </th>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 text-left">
                                     {{ $a->name }}
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 text-left">
                                     <div>The asset is not functional.</div>
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 text-right">
                                     {{-- BUTTON EDIT --}}
                                     <button type="button" data-id="{{ $a->id }}" data-modal-target="sourceModal"
                                         data-name="{{ $a->name }}" onclick="editSourceModal(this)"
@@ -149,15 +160,106 @@
                     </div>
                     <div class="flex items-center p-4 space-x-2 border-t border-gray-200 rounded-b">
                         <button type="submit" id="formSourceButton"
-                            class="bg-green-400 m-2 w-40 h-10 rounded-xl hover:bg-green-500">Simpan</button>
+                            class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">Simpan</button>
                         <button type="button" data-modal-target="sourceModal" onclick="changeSourceModal(this)"
-                            class="bg-red-500 m-2 w-40 h-10 rounded-xl text-white hover:shadow-lg hover:bg-red-600">Batal</button>
+                            class="inline-block space-x-1 bg-red-500 hover:bg-red-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">Batal</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedItemsKey = 'selectedItems';
+            let selectedItems = JSON.parse(localStorage.getItem(selectedItemsKey)) || [];
+
+            function updateLocalStorage() {
+                localStorage.setItem(selectedItemsKey, JSON.stringify(selectedItems));
+            }
+
+            function updateCheckboxes() {
+                const checkboxes = document.querySelectorAll('input[name="user_id[]"]');
+                const checkAllBox = document.querySelector('input[name="check"]');
+                let allChecked = true;
+
+                checkboxes.forEach(checkbox => {
+                    if (selectedItems.includes(checkbox.value)) {
+                        checkbox.checked = true;
+                    } else {
+                        allChecked = false;
+                    }
+                });
+
+                checkAllBox.checked = allChecked;
+            }
+
+            function handleCheckboxChange(event) {
+                const checkbox = event.target;
+                const checkAllBox = document.querySelector('input[name="check"]');
+
+                if (checkbox.checked) {
+                    if (!selectedItems.includes(checkbox.value)) {
+                        selectedItems.push(checkbox.value);
+                    }
+                } else {
+                    selectedItems = selectedItems.filter(item => item !== checkbox.value);
+                }
+
+                updateLocalStorage();
+
+                const checkboxes = document.querySelectorAll('input[name="user_id[]"]');
+                checkAllBox.checked = Array.from(checkboxes).every(cb => cb.checked);
+            }
+
+            document.querySelectorAll('input[name="user_id[]"]').forEach(checkbox => {
+                checkbox.addEventListener('change', handleCheckboxChange);
+            });
+
+            document.querySelector('input[name="check"]').addEventListener('change', function(event) {
+                const checkAll = event.target;
+                const checkboxes = document.querySelectorAll('input[name="user_id[]"]');
+
+                checkboxes.forEach(checkbox => {
+                    if (!checkbox.disabled) {
+                        checkbox.checked = checkAll.checked;
+                        if (checkAll.checked) {
+                            if (!selectedItems.includes(checkbox.value)) {
+                                selectedItems.push(checkbox.value);
+                            }
+                        } else {
+                            selectedItems = selectedItems.filter(item => item !== checkbox.value);
+                        }
+                    }
+                });
+
+                updateLocalStorage();
+            });
+            const deleteButton = document.getElementById('deleteButton');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+            function showDeleteButton() {
+                const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                deleteButton.classList.toggle('hidden', checkedBoxes.length === 0);
+            }
+
+            showDeleteButton();
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', showDeleteButton);
+            });
+
+            function deleteSelected() {
+                const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                checkedBoxes.forEach(checkbox => {
+                    checkbox.parentNode.remove();
+                });
+                showDeleteButton();
+            }
+
+            // deleteButton.addEventListener('click', deleteSelected);
+        });
+    </script>
     <script>
         // modal add new asset status
         document.getElementById('addStatusBtn').addEventListener('click', function() {
@@ -194,7 +296,7 @@
             const url = "{{ route('assetstatus.update', ':id') }}".replace(':id', id);
 
             // Update modal title and input values
-            document.getElementById('title_source').innerText = `Update materi_ajar ${name}`;
+            document.getElementById('title_source').innerText = `Update Asset Status ${name}`;
             document.getElementById('names').value = name;
             document.getElementById('formSourceButton').innerText = 'Simpan';
             formModal.setAttribute('action', url);
