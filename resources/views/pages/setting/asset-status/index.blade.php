@@ -83,8 +83,8 @@
                             </th>
                             <th class="px-6 py-4 border-b text-left">Asset Status</th>
                             <th class="px-6 py-4 border-b text-left">Description</th>
+                            <th class="px-6 py-4 border-b text-right"></th>
                             <th class="px-6 py-4 border-b text-right">
-                                </button>
                             </th>
 
                         </tr>
