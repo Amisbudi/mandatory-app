@@ -147,30 +147,30 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('')">
                         {{ __('Report') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs([
+                    {{-- <x-nav-link :href="route('users.index')" :active="request()->routeIs([
                         'users.index',
                         'users.create',
                         'users.show',
                         'users.edit',
                     ])">
                         {{ __('Users') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs([
+                    </x-nav-link> --}}
+                    {{-- <x-nav-link :href="route('roles.index')" :active="request()->routeIs([
                         'roles.index',
                         'roles.create',
                         'roles.show',
                         'roles.edit',
                     ])">
                         {{ __('Roles') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('permissions.index')" :active="request()->routeIs([
+                    </x-nav-link> --}}
+                    {{-- <x-nav-link :href="route('permissions.index')" :active="request()->routeIs([
                         'permissions.index',
                         'permissions.create',
                         'permissions.show',
                         'permissions.edit',
                     ])">
                         {{ __('Permissions') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
 
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -206,10 +206,7 @@
                                     {{ __('Database') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('dashboard')">
-                                    {{ __('Role & Permiss') }}
-                                </x-dropdown-link>
-                                <x-dropdown-link :href="route('dashboard')">
-                                    {{ __('Settings') }}
+                                    {{ __('Role & Permission') }}
                                 </x-dropdown-link>
                                 <div class="relative">
                                     <button id="settings-button"
@@ -223,7 +220,7 @@
                                         </svg>
                                     </button>
                                     <div id="settings-submenu"
-                                        class="hidden absolute left-full top-[-222px] ml-1 w-48 border bg-white shadow-lg rounded-md">
+                                        class="hidden absolute left-full top-[-185px] ml-1 w-48 border bg-white shadow-lg rounded-md">
                                         <x-dropdown-link :href="route('assetstatus.index')">
                                             {{ __('Asset Status') }}
                                         </x-dropdown-link>
