@@ -46,25 +46,29 @@
                     </span>
                 </div>
                 <div>
-                    <button id="addStatusBtn"
-                        class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">
-                        <i class="fa-solid fa-circle-plus"></i>
-                        <span>Add New Asset Status</span>
-                    </button>
-                    <button id="actionsButton"
-                        class="inline-block space-x-1 bg-sky-200 hover:bg-sky-300 py-2.5 px-5 text-sky-600 rounded-lg text-sm font-medium">Actions</button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownMenu"
-                        class="origin-top-right absolute right-12 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
-                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="actionsButton">
-                            <a href="#"
-                                class="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
-                                role="menuitem">Export to Excel</a>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
-                                role="menuitem">Export to PDF</a>
+                    <button id="deleteButton" type="hidden"
+                        class="inline-block space-x-1 bg-red-500 hover:bg-red-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium mr-1"><i
+                            class="fas fa-trash mr-2"></i> Delete selected
+                        <button id="addStatusBtn"
+                            class="inline-block space-x-1 bg-sky-500 hover:bg-sky-600 py-2.5 px-5 text-white rounded-lg text-sm font-medium">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span>Add New Asset Status</span>
+                        </button>
+                        <button id="actionsButton"
+                            class="inline-block space-x-1 bg-sky-200 hover:bg-sky-300 py-2.5 px-5 text-sky-600 rounded-lg text-sm font-medium">Actions</button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownMenu"
+                            class="origin-top-right absolute right-12 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                            <div class="py-1" role="menu" aria-orientation="vertical"
+                                aria-labelledby="actionsButton">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Export to Excel</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Export to PDF</a>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
 
@@ -79,9 +83,7 @@
                             </th>
                             <th class="px-6 py-4 border-b text-left">Asset Status</th>
                             <th class="px-6 py-4 border-b text-left">Description</th>
-                            <th class="px-6 py-4 border-b text-right"><button id="deleteButton" type="hidden"
-                                    class="bg-red-500 hover:bg-bg-red-300 px-3 py-1 rounded-md text-xs text-white"><i
-                                        class="fas fa-trash"></i>
+                            <th class="px-6 py-4 border-b text-right">
                                 </button>
                             </th>
 
@@ -119,6 +121,7 @@
                                         onclick="return assetstatusDelete('{{ $a->id }}','{{ $a->name }}')"
                                         class="bg-red-500 hover:bg-bg-red-300 px-3 py-1 rounded-md text-xs text-white"><i
                                             class="fas fa-trash"></i></button>
+
                                 </td>
 
                             </tr>
@@ -323,7 +326,6 @@
             status.classList.remove('hidden');
         };
 
-
         const sourceModalClose = (button) => {
             const modalTarget = button.dataset.modalTarget;
             let status = document.getElementById(modalTarget);
@@ -333,7 +335,7 @@
         const assetstatusDelete = async (id, name) => {
             let tanya = confirm(`Apakah anda yakin untuk menghapus Assets Status ${name} ?`);
             if (tanya) {
-                await axios.post(`/assetstatus/${id}`, {
+                await axios.post(`/setting/assetstatus/${id}`, {
                         '_method': 'DELETE',
                         '_token': $('meta[name="csrf-token"]').attr('content')
                     })
